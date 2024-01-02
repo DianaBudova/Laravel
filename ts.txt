@@ -1,0 +1,91 @@
+// назва програми
+1) назва - туристична агенція
+
+    1) адмін панель для менеджера
+    2) сторінка вітальна для замовлення туру
+
+2) функціонал:
+    1) фронт
+        а) список турів як вигляд новини чи блог
+        https://tourbest.com.ua/?gclid=CjwKCAiA98WrBhAYEiwA2WvhOrFHbNZr20vy7T43yCKwFCOXHkxASJS_4lyBXBw-P344GX3Jwpy7GhoCuPoQAvD_BwE
+
+        б) форма для замовлення
+            контактна інфа (тел, піп, емаїл,,,)
+            сам тур (з його id)
+            дні на коли (календар)
+            кількість людей
+            вартість туру
+        
+        в) будь який дизайн (можна здерти з іншого сайту)
+
+    2) адмін
+        а) бачити всі зроблені замовлення по туру
+            - могти відреагувати (відмінити, одобрити)
+        
+        б) форма для створення туру (ціна, на коли, опис та інше)
+            - список всіх турів і їх редагувати (crud)
+        
+        в) список користувачів (менеджерів - замовники) (crud)
+
+**************************************************************************************************************
+
+    код
+
+    бд - таблиці
+        - users (вже є)
+        - orders (створюємо)
+            поля - id, тел, піп, емаїл, тур_id, дні (к-сть днів або щось інше), ціна
+        - tours (створюємо)
+            id, name, price (per night), img, description, status,
+        
+    cmv (mvc) -
+    controllers:
+        - UserController (crud)
+        - OrderController (crud)
+        - TourController (crud)
+        - WelcomeController (form)
+    
+    models:
+        - Order (model) (модель и для OrderController и для HomeController)
+        - Tour (model)
+    
+    routes:
+        - welcome (route)
+        - order (route)
+        - tour (route)
+        - user (route)
+    
+    views:
+        - order (view) (папка)
+            create.blade.php
+            show.blade.php
+            edit.blade.php
+            order.blade.php
+
+        - welcome (view) (папка)
+            create.blade.php
+            show.blade.php
+            edit.blade.php
+            welcome.blade.php (id)
+
+        - tour (view) (папка)
+            create.blade.php
+            show.blade.php
+            edit.blade.php
+            tour.blade.php
+
+        - user (view) (папка)
+            create.blade.php
+            show.blade.php
+            edit.blade.php
+            user.blade.php
+
+Hw: (точно та же самая реализация что и в Categories)
+PostController (make:controller)
+Post model (make:model)
+Post view
+    create.blade.php
+    show.blade.php
+    edit.blade.php
+    post.blade.php
+Posts table (id, name, description, created_at, updated_at) (в phpMyAdmin)
